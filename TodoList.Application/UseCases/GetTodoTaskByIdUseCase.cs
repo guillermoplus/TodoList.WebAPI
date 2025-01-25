@@ -8,7 +8,7 @@ public class GetTodoTaskByIdUseCase(ITodoTaskRepository todoTaskRepository)
     public async Task<TodoTaskResponse?> ExecuteAsync(Guid id)
     {
         var task = await todoTaskRepository.GetByIdAsync(id);
-        if (task == null)
+        if (task is null)
         {
             return null;
         }

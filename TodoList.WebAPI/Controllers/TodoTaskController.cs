@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TodoList.Application.DTO;
 using TodoList.Application.UseCases;
-using TodoList.Domain.Entities;
 
 namespace TodoList.WebAPI.Controllers;
 

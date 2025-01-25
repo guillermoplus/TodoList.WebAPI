@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>12.0</LangVersion>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
@@ -11,8 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TodoList.Application\TodoList.Application.csproj" />
-      <ProjectReference Include="..\TodoList.Infrastructure\TodoList.Infrastructure.csproj" />
+        <ProjectReference Include="..\TodoList.Application\TodoList.Application.csproj"/>
+        <ProjectReference Include="..\TodoList.Infrastructure\TodoList.Infrastructure.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -14,7 +14,11 @@ builder.Services.AddDbContext<TodoListDbContext>(opt =>
 
 // Dependencies
 builder.Services.AddScoped<ITodoTaskRepository, TodoTaskRepository>();
+builder.Services.AddScoped<GetTodoTaskByIdUseCase>();
 builder.Services.AddScoped<CreateTodoTaskUseCase>();
+builder.Services.AddScoped<UpdateTodoTaskUseCase>();
+builder.Services.AddScoped<DeleteTodoTaskUseCase>();
+builder.Services.AddScoped<MarkTaskAsCompletedUseCase>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
