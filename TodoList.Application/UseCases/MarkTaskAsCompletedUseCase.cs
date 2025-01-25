@@ -1,10 +1,9 @@
 ﻿using TodoList.Application.DTO;
-using TodoList.Domain.Entities;
 using TodoList.Domain.Interfaces;
 
 namespace TodoList.Application.UseCases;
 
-public class MarkTaskAsCompleted(ITodoTaskRepository todoTaskRepository)
+public class MarkTaskAsCompletedUseCase(ITodoTaskRepository todoTaskRepository)
 {
     public async Task<TodoTaskResponse> ExecuteAsync(Guid id)
     {
@@ -13,8 +12,18 @@ public class MarkTaskAsCompleted(ITodoTaskRepository todoTaskRepository)
         {
             throw new Exception("Task not found");
         }
+
         task.MarkAsCompleted();
         await todoTaskRepository.UpdateAsync(task);
-        return task;
+        return new TodoTaskResponse()
+        {
+            Id = task.Id,
+            Title = task.Title,
+            Description = task.Description,
+            IsCompleted = task.IsCompleted,
+            CompletedAt = task.CompletedAt,
+            DueDate = task.DueDate,
+            CreatedAt = task.CreatedAt,
+        };
     }
 }
