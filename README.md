@@ -4,7 +4,7 @@ Esta es una solución para una API web de lista de tareas (TodoList) desarrollad
 
 ## Requisitos
 
-- .NET 6.0 o superior
+- .NET 8.0 o superior
 - Visual Studio 2022 o JetBrains Rider
 - SQLite
 
@@ -12,8 +12,8 @@ Esta es una solución para una API web de lista de tareas (TodoList) desarrollad
 
 1. Clona el repositorio:
     ```sh
-    git clone https://github.com/tu-usuario/todolist-webapi.git
-    cd todolist-webapi
+    git clone https://github.com/guillermoplus/TodoList.WebAPI.git
+    cd TodoList.WebAPI
     ```
 
 2. Configura las variables de entorno en `appsettings.json`:
@@ -67,14 +67,11 @@ Esta es una solución para una API web de lista de tareas (TodoList) desarrollad
 
 La API utiliza JWT para la autenticación. Asegúrate de incluir el token en el encabezado de autorización de tus solicitudes:
 
+```http
+Authorization
+Bearer tu-token
+```
+
 ## Documentación
 
 La API incluye documentación Swagger. Para acceder a ella, ejecuta la aplicación y navega a `https://localhost:5001/swagger`.
-
-## Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, abre un issue o un pull request en GitHub.
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
