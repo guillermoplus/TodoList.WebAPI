@@ -17,7 +17,7 @@ public class AuthController : ControllerBase
     }
 
     [AllowAnonymous]
-    [HttpPost("login")]
+    [HttpPost("Login")]
     public IActionResult Login([FromBody] LoginRequest request)
     {
         if (request.Username == "test" && request.Password == "test")

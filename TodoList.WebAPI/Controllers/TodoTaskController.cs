@@ -24,7 +24,7 @@ public class TodoTaskController(
         return Ok(task);
     }
 
-    [HttpGet("all")]
+    [HttpGet("All")]
     public async Task<IActionResult> GetAll()
     {
         var tasks = await getAllTodoTaskUseCase.ExecuteAsync();
@@ -62,7 +62,7 @@ public class TodoTaskController(
         return Ok(deletedTask);
     }
 
-    [HttpPatch("{id:guid}/complete")]
+    [HttpPatch("{id:guid}/Complete")]
     public async Task<IActionResult> Complete(Guid id)
     {
         var completedTask = await markTaskAsCompletedUseCase.ExecuteAsync(id);
