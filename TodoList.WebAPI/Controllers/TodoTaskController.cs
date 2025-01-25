@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TodoList.Application.DTO;
 using TodoList.Application.UseCases;
@@ -6,6 +7,7 @@ namespace TodoList.WebAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class TodoTaskController(
     ILogger<TodoTaskController> logger,
     GetTodoTaskByIdUseCase getTodoTaskByIdUseCase,
