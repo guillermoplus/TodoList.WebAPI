@@ -1,0 +1,62 @@
+using Microsoft.AspNetCore.Mvc;
+using TodoList.Application.DTO;
+using TodoList.Application.UseCases;
+using TodoList.Domain.Entities;
+
+namespace TodoList.WebAPI.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class TodoTaskController(
+    ILogger<TodoTaskController> logger,
+    GetTodoTaskByIdUseCase getTodoTaskByIdUseCase,
+    CreateTodoTaskUseCase createTodoTaskUseCase,
+    UpdateTodoTaskUseCase updateTodoTaskUseCase,
+    DeleteTodoTaskUseCase deleteTodoTaskUseCase,
+    MarkTaskAsCompletedUseCase markTaskAsCompletedUseCase) : ControllerBase
+{
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> Get(Guid id)
+    {
+        var task = await getTodoTaskByIdUseCase.ExecuteAsync(id);
+        return Ok(task);
+    }
+
+    [HttpPost]
+    public IActionResult Create([FromBody] CreateTodoTaskRequest todoTask)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var task = createTodoTaskUseCase.ExecuteAsync(todoTask);
+        return Ok(task);
+    }
+
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateTodoTaskRequest todoTask)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var task = await updateTodoTaskUseCase.ExecuteAsync(id, todoTask);
+        return Ok(task);
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var deletedTask = await deleteTodoTaskUseCase.ExecuteAsync(id);
+        return Ok(deletedTask);
+    }
+
+    [HttpPatch("{id:guid}/complete")]
+    public async Task<IActionResult> Complete(Guid id)
+    {
+        var completedTask = await markTaskAsCompletedUseCase.ExecuteAsync(id);
+        return Ok(completedTask);
+    }
+}
