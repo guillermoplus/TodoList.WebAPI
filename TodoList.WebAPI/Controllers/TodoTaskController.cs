@@ -9,6 +9,7 @@ namespace TodoList.WebAPI.Controllers;
 public class TodoTaskController(
     ILogger<TodoTaskController> logger,
     GetTodoTaskByIdUseCase getTodoTaskByIdUseCase,
+    GetAllTodoTaskUseCase getAllTodoTaskUseCase,
     CreateTodoTaskUseCase createTodoTaskUseCase,
     UpdateTodoTaskUseCase updateTodoTaskUseCase,
     DeleteTodoTaskUseCase deleteTodoTaskUseCase,
@@ -19,6 +20,13 @@ public class TodoTaskController(
     {
         var task = await getTodoTaskByIdUseCase.ExecuteAsync(id);
         return Ok(task);
+    }
+
+    [HttpGet("all")]
+    public async Task<IActionResult> GetAll()
+    {
+        var tasks = await getAllTodoTaskUseCase.ExecuteAsync();
+        return Ok(tasks);
     }
 
     [HttpPost]

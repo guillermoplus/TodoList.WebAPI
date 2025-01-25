@@ -15,6 +15,7 @@ builder.Services.AddDbContext<TodoListDbContext>(opt =>
 // Dependencies
 builder.Services.AddScoped<ITodoTaskRepository, TodoTaskRepository>();
 builder.Services.AddScoped<GetTodoTaskByIdUseCase>();
+builder.Services.AddScoped<GetAllTodoTaskUseCase>();
 builder.Services.AddScoped<CreateTodoTaskUseCase>();
 builder.Services.AddScoped<UpdateTodoTaskUseCase>();
 builder.Services.AddScoped<DeleteTodoTaskUseCase>();
