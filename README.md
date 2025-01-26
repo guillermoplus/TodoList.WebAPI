@@ -74,4 +74,4 @@ Bearer tu-token
 
 ## Documentación
 
-La API incluye documentación Swagger. Para acceder a ella, ejecuta la aplicación y navega a `https://localhost:44339/swagger`.
+La API incluye documentación Swagger. Para acceder a ella, ejecuta la aplicación y navega a `https://localhost:5240/swagger`.
