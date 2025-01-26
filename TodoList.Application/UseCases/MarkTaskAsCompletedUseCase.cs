@@ -10,7 +10,7 @@ public class MarkTaskAsCompletedUseCase(ITodoTaskRepository todoTaskRepository)
         var task = await todoTaskRepository.GetByIdAsync(id);
         if (task is null)
         {
-            throw new Exception("Task not found");
+            throw new KeyNotFoundException("Task not found");
         }
 
         task.MarkAsCompleted();

@@ -8,6 +8,7 @@ using TodoList.Domain.Interfaces;
 using TodoList.Infrastructure.Persistence;
 using TodoList.Infrastructure.Repositories;
 using TodoList.WebAPI.Interfaces;
+using TodoList.WebAPI.Middlewares;
 using TodoList.WebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -86,6 +87,8 @@ builder.Services.AddSwaggerGen(opt =>
 });
 
 var app = builder.Build();
+
+app.ConfigureGlobalExceptionHandler();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
